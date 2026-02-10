@@ -18,43 +18,32 @@ PaneManager::PaneManager(QWidget *parent)
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
-bool PaneManager::addNewPane(const QString &id)
+void PaneManager::addNewPane(PaneType pane_type)
 {
-	if (panes_.contains(id))
+	if (panes_.contains(pane_type))
 	{
-		return false;
+		return;
 	}
 
-	PaneWidget *new_pane_wgt = new PaneWidget(id, this);
+	PaneWidget *new_pane_wgt = new PaneWidget(pane_type, this);
 	new_pane_wgt->setStyleSheet("background-color: yellow;");
 	layout_->addWidget(new_pane_wgt);
-	panes_.emplace(id, new_pane_wgt);
 
-	return true;
+	panes_.emplace(pane_type, new_pane_wgt);
 }
 
-bool PaneManager::disablePane(const QString &id)
+void PaneManager::disablePane(PaneType pane_type)
 {
-	if (panes_.contains(id))
+	if (panes_.contains(pane_type))
 	{
-		panes_.at(id)->setEnabled(false);
-		return true;
-	}
-	else
-	{
-		return false;
+		panes_.at(pane_type)->setEnabled(false);
 	}
 }
 
-bool PaneManager::enablePane(const QString &id)
+void PaneManager::enablePane(PaneType pane_type)
 {
-	if (panes_.contains(id))
+	if (panes_.contains(pane_type))
 	{
-		panes_.at(id)->setEnabled(true);
-		return true;
-	}
-	else
-	{
-		return false;
+		panes_.at(pane_type)->setEnabled(true);
 	}
 }

@@ -7,6 +7,7 @@
 #include <QWidget>
 
 // StatMon
+#include "gui/pane_types.hpp"
 #include "gui/pane_widget.hpp"
 
 // STL
@@ -19,13 +20,13 @@ class PaneManager : public QWidget
   public:
 	explicit PaneManager(QWidget *parent = nullptr);
 
-	bool addNewPane(const QString &id);
-	bool disablePane(const QString &id);
-	bool enablePane(const QString &id);
+	void addNewPane(PaneType pane_type);
+	void disablePane(PaneType pane_type);
+	void enablePane(PaneType pane_type);
 
   private:
 	QHBoxLayout *layout_;
-	std::unordered_map<QString, PaneWidget *> panes_;
+	std::unordered_map<PaneType, PaneWidget *> panes_;
 };
 
 #endif // STATMON_PANE_MANAGER_HPP

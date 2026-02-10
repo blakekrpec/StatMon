@@ -4,16 +4,33 @@
 #include <QVBoxLayout>
 
 // StatMon
+#include "gui/data_types.hpp"
+#include "gui/data_widget.hpp"
+#include "gui/pane_types.hpp"
 #include "gui/pane_widget.hpp"
 
-PaneWidget::PaneWidget(const QString &id, QWidget *parent)
+PaneWidget::PaneWidget(PaneType pane_type, QWidget *parent)
 	: QWidget(parent)
 	, layout_(new QVBoxLayout(this))
-	, id_(id)
+	, title_(new QLabel(paneTypeToQString(pane_type)))
+
 {
-	QLabel *label = new QLabel(id, this);
-	label->setStyleSheet("font-size: 18px;");
-	layout_->addWidget(label);
+	layout_->addWidget(title_);
 
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	addDataWidget(DataType::TEMP);
+	addDataWidget(DataType::UTIL);
+}
+
+void PaneWidget::addDataWidget(DataType data_type)
+{
+	if (data_panes_.contains(data_type))
+	{
+		return;
+	}
+
+	DataWidget *data_widget = new DataWidget(data_type, this);
+	layout_->addWidget(data_widget);
+
+	data_panes_.emplace(data_type, data_widget);
 }

@@ -4,16 +4,21 @@
 #include <QVBoxLayout>
 
 // StatMon
+#include "gui/data_types.hpp"
 #include "gui/data_widget.hpp"
 
-DataWidget::DataWidget(const QString &id, QWidget *parent)
+DataWidget::DataWidget(DataType data_type, QWidget *parent)
 	: QWidget(parent)
 	, layout_(new QVBoxLayout(this))
-	, id_(id)
+	, title_(new QLabel(dataTypeToQString(data_type), this))
 {
-	QLabel *label = new QLabel(id, this);
-	label->setStyleSheet("font-size: 18px;");
-	layout_->addWidget(label);
+	title_->setStyleSheet("font-size: 18px;");
+	layout_->addWidget(title_);
 
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+}
+
+void DataWidget::updateTitle(const QString &title)
+{
+	title_->setText(title);
 }

@@ -2,6 +2,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <qpushbutton.h>
 
 // StatMon
 #include "gui/main_window.hpp"
@@ -22,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 	pane_manager_ = new PaneManager(central_widget_);
 	main_layout->addWidget(pane_manager_);
-	pane_manager_->addNewPane("pane 1");
-	pane_manager_->addNewPane("pane 2");
+	pane_manager_->addNewPane(PaneType::CPU);
+	pane_manager_->addNewPane(PaneType::GPU);
 
 	settings_dialog_ = new SettingsDialog(central_widget_);
 	main_layout->addWidget(settings_dialog_);

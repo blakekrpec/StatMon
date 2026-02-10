@@ -13,6 +13,10 @@ class SettingsDialog : public QDialog
   public:
 	explicit SettingsDialog(QWidget *parent = nullptr);
 
+  private slots:
+	void onSave();
+	void onReset();
+
   private:
 	QTabWidget *tab_widget_;
 	QDialogButtonBox *button_box_;
