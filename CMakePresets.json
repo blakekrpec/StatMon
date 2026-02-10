@@ -21,8 +21,11 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe"
+                "CMAKE_PREFIX_PATH": "C:/Qt/6.10.2/mingw_64",
+                "CMAKE_CXX_COMPILER": "C:/Qt/Tools/mingw1310_64/bin/g++.exe"
+            },
+            "environment": {
+                "PATH": "C:/Qt/Tools/mingw1310_64/bin;C:/Qt/Tools/Ninja;$penv{PATH}"
             },
             "condition": {
                 "type": "equals",

@@ -7,3 +7,6 @@ BreakBeforeBraces: Allman
 TabWidth: 4
 ColumnLimit: 120
 PointerAlignment: Right
+BreakConstructorInitializers: BeforeComma
+PackConstructorInitializers: Never
+ConstructorInitializerIndentWidth: 4

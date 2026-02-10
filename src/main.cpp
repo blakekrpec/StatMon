@@ -1,4 +1,4 @@
-// StatMon
+//StatMon
 #include "gui/main_window.hpp"
 
 // Qt
